@@ -21,7 +21,7 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'gonzoooooo/asyncomplete-look.vim'
 ```
 
-### Dein
+### dein.vim
 
 ```toml
 [[plugins]]
