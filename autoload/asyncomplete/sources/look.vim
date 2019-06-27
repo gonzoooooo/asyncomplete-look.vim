@@ -6,7 +6,7 @@ function! asyncomplete#sources#look#completor(opt, ctx)
   let l:col = a:ctx['col']
   let l:typed = a:ctx['typed']
 
-  let l:keyword = matchstr(l:typed, '\v\S+$')
+  let l:keyword = matchstr(l:typed, '\v[a-z,A-Z]+$')
   let l:keyword_len = len(l:keyword)
 
   if l:keyword_len < 1
