@@ -40,9 +40,12 @@ function! s:handler(info, id, data, event) abort
 
     for l:linenr in range(l:linelen)
       let l:linesplit = split(a:info['lines'][l:linenr])
-      let l:matches[l:linenr]['word'] = l:linesplit[0]
-      if len(l:linesplit) > 1
-        let l:matches[l:linenr]['info'] = join(l:linesplit[1:], ' ')
+
+      if len(l:linesplit) != 0
+        let l:matches[l:linenr]['word'] = l:linesplit[0]
+        if len(l:linesplit) > 1
+          let l:matches[l:linenr]['info'] = join(l:linesplit[1:], ' ')
+        endif
       endif
     endfor
 
