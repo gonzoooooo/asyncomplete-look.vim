@@ -10,6 +10,7 @@ function! asyncomplete#sources#look#completor(opt, ctx)
   let l:keyword_len = len(l:keyword)
 
   if l:keyword_len < 1
+    call asyncomplete#complete(a:opt['name'], a:ctx, l:startcol, l:matches, 1)
     return
   endif
 
