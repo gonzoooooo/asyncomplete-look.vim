@@ -5,11 +5,14 @@ endfunction
 function! asyncomplete#sources#look#completor(opt, ctx)
   let l:col = a:ctx['col']
   let l:typed = a:ctx['typed']
+  let l:config = get(a:opt, 'config', {'complete_min_chars': 2})
+  let l:complete_min_chars = get(l:config, 'complete_min_chars', 2)
 
-  let l:keyword = matchstr(l:typed, '\v[a-z,A-Z]+$')
+  let l:keyword = matchstr(l:typed, '\v[a-z,A-Z]{'.l:complete_min_chars.',}$')
   let l:keyword_len = len(l:keyword)
 
-  if l:keyword_len < 1
+  if l:keyword_len < l:complete_min_chars
+    call asyncomplete#complete(a:opt['name'], a:ctx, l:startcol, l:matches, 1)
     return
   endif
 
