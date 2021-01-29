@@ -20,8 +20,10 @@ function! asyncomplete#sources#look#completor(opt, ctx)
   let l:info = { 'start_col': l:start_col, 'opt': a:opt, 'ctx': a:ctx, 'lines': [] }
   let l:cmd = ['look', l:keyword]
 
-  let l:dict = get(g:, 'asyncomplete#sources#look#dict', "")
-  let l:cmd = l:cmd + [l:dict]
+  let l:dict = get(g:, 'asyncomplete#sources#look#dict', '')
+  if l:dict != ''
+    let l:cmd = l:cmd + [l:dict]
+  endif
 
   call async#job#start(l:cmd, {
     \   'on_stdout': function('s:handler', [l:info]),
