@@ -41,7 +41,7 @@ function! s:handler(info, id, data, event) abort
     let l:matches = []
     let l:itembase = {'dup' : 1, 'icase' : 1, 'menu' : 'look' }
 
-    let l:config = get(a:info['opt'], 'config')
+    let l:config = get(a:info['opt'], 'config', {})
     let l:allow_first_capital_letter = get(l:config, 'allow_first_capital_letter', 0)
 
     for l:line in a:info['lines']
